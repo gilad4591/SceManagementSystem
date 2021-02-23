@@ -15,6 +15,7 @@ in this app you can register students and lecturers to different courses, give i
 * Windows 10
 
 👥 Access level & main features
+
 This web app has three different user types with a different features for each type.
 1. Admin 💼
 * manage the system, 
