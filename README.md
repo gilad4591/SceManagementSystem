@@ -1,5 +1,5 @@
 
-## University Management System 🎓
+## Academic Management System 🎓
 
 ## Description 
 WebApp using ASP MVC .NET that built to manage acedemic instituation,
@@ -30,5 +30,22 @@ This web app has three different user types with a different features for each t
 
 # Screenshots
 
+<em>Login <p></p>
+<img src="https://github.com/gilad4591/SceManagementSystem/blob/master/ScreenShots/login.jpg" width="400" height="250"/>
 
+<em>Create Course: <p></p>
+<img src="https://github.com/gilad4591/SceManagementSystem/blob/master/ScreenShots/createCourse.jpg" width="400" height="250"/>
 
+<em>Assign Lecturer To Course: <p></p>
+<img src="https://github.com/gilad4591/SceManagementSystem/blob/master/ScreenShots/assignLecturerToCourse.jpg" width="250" height="400"/>
+
+<em>Create Exam: <p></p>
+<img src="https://github.com/gilad4591/SceManagementSystem/blob/master/ScreenShots/createExam.jpg" width="250" height="400"/>
+
+<em>Exam View/Edit Details <p></p>
+<img src="https://github.com/gilad4591/SceManagementSystem/blob/master/ScreenShots/editExamSch.jpg" width="400" height="250"/>
+
+<em>Lecturer Schedule <p></p>
+<img src="https://github.com/gilad4591/SceManagementSystem/blob/master/ScreenShots/lect%20schdule.jpg" width="400" height="250"/>
+
+</em>
