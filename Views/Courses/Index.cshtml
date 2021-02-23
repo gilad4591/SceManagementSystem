@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MVC.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+<html>
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+
+    table, th, td, h2 {
+        border: 1px solid black;
+        border-collapse: separate;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+
+
+
+<head>
+    <h2>Courses Details: </h2>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Day)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { courseId = item.CourseId , courseName = item.CourseName, courseDay = item.Day, courseHour = item.Hour, courseClass = item.Class }) |
+                    @Html.ActionLink("Delete", "Delete", new { courseId = item.CourseId , courseName = item.CourseName, courseDay = item.Day, courseHour = item.Hour, courseClass = item.Class })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>
+</html>

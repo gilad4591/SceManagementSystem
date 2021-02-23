@@ -1,0 +1,107 @@
+﻿@model MVC.ModelView.CourseViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+@{
+    ViewBag.Title = "AssignStudent";
+}
+
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+        table, th, td, h2 {
+  border: 1px solid black;
+  border-collapse: separate;
+  background-color: white;
+}
+th, td {
+  padding: 5px;
+}
+</style>
+
+<h2>Assign student to course</h2>
+
+<body>
+    <p>
+        @Html.ActionLink("Assign", "AssignConfirm")
+    </p>
+    <font size="4" color="01df00">Existing courses in system:</font>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Finish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Class)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Day)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>item.Finish)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <font size="4" color="01df00">Existing student in system:</font>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Name)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+            @if (item.Type == "Student")
+            {
+                     <td>
+                      @Html.DisplayFor(modelItem => item.Id)
+                     </td>
+                     <td>
+                      @Html.DisplayFor(modelItem => item.Name)
+                     </td>
+            }
+            </tr>
+        }
+
+    </table>

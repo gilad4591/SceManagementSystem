@@ -1,0 +1,94 @@
+﻿@model MVC.ModelView.StudentViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+<html>
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+
+    table, th, td, h2 {
+        border: 1px solid black;
+        border-collapse: separate;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+
+<head>
+    <h2>Students Exams: </h2>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.MoedADate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.ClassA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.MoedBDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.ClassB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam.Grade)
+            </th>
+        </tr>
+
+
+
+        @{
+
+            foreach (var item in Model.Students)
+            {
+                <tr>
+                    @if (@Session["currUserId"].ToString() == item.StudId)
+                    {
+                        foreach (var item2 in Model.Exams)
+                        {
+
+                            if (item.StudId == item2.StudentId && item.CourseId == item2.CourseId)
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.CourseName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.MoedADate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.ClassA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.MoedBDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.ClassB)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.Grade)
+                                </td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+        }
+
+    </table>
+
+</body>
+</html>

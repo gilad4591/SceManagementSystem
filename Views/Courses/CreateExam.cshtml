@@ -1,0 +1,107 @@
+﻿@model MVC.ModelView.CourseViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+
+    table, th, td, h2 {
+        border: 1px solid black;
+        border-collapse: separate;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+
+<html>
+<head>
+    <h2>Create New Exam</h2>
+</head>
+
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Course</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Exam.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Exam.CourseId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exam.CourseId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Exam.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Exam.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exam.CourseName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Exam.MoedADate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Exam.MoedADate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exam.MoedADate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Exam.ClassA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Exam.ClassA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exam.ClassA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Exam.MoedBDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Exam.MoedBDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exam.MoedBDate, "", new { @class = "text-danger" })
+                </div>
+            </div>            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Exam.ClassB, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Exam.ClassB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exam.ClassB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @{
+                        if (ViewBag.error != null)
+                        {
+                            <span style="color:red">@ViewBag.error</span>
+                            <br />
+                        }
+                        if (ViewBag.error2 != null)
+                        {
+                            <span style="color:red">@ViewBag.error2</span>
+                            <br />
+                        }
+                    }
+
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+                        }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</body>
+</html>

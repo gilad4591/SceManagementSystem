@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #017c00;
+        }
+
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+            li:last-child {
+                border-right: none;
+            }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #01bd00;
+                }
+
+        .active {
+            background-color: #01bd00;
+        }
+        #responsive-image {  width: 100%;  height: 80px; } 
+    </style>
+</head>
+<body>
+    <div>
+        <center><img src="../../images/sce.jpg" alt="sce" id="responsive-image"> </center>
+        
+        <ul>
+            @{
+                if (@Session["currUserId"] != null)
+                {
+                    if (@Session["currUserType"].ToString() == "Admin")//if the current user is a Admin -> Open all the Option for him.
+                    {
+                            <li><a href="@Url.Action("homePage", "Home")"> Home</a></li>
+                            <li><a href="@Url.Action("Index", "Courses")"> Courses Management</a></li>
+                            <li><a href="@Url.Action("AssignStudent", "Courses")">Assign Student To Course</a></li>
+                            <li><a href="@Url.Action("AssignLecturer", "Courses")">Assign Lecturer To Course</a></li>
+                            <li><a href="@Url.Action("CreateExam", "Courses")">Create Exam</a></li>
+                            <li><a href="@Url.Action("EditExam", "Courses")">Edit Exam Schedule</a></li>
+                            <li><a href="@Url.Action("EditExamGrade", "Courses")">Edit Exam Grades</a></li>
+                            <li><a href="@Url.Action("Logout", "Login")">Logout</a></li>
+                            <li><a style="color:darkgrey">  Welcome Back @Session["currName"]!</a></li>
+
+                    }
+                    else if (@Session["currUserType"].ToString() == "Student")
+                    {
+                        <li><a href="@Url.Action("homePage", "Home")"> Home</a></li>
+                        <li><a href="@Url.Action("ShowSchedule", "Student")">View Schedule</a></li>
+                        <li><a href="@Url.Action("ShowExam", "Student")">View Exams</a></li>
+                        <li><a href="@Url.Action("Logout", "Login")">Logout</a></li>
+                        <li><a style="color:darkgrey">  Welcome Back @Session["currName"]!</a></li>
+                    }
+                    else if (@Session["currUserType"].ToString() == "Lecturer")
+                    {
+                        <li><a href="@Url.Action("homePage", "Home")"> Home</a></li>
+                        <li><a href="@Url.Action("ShowSchedule", "Lecturer")">View Schedule</a></li>
+                        <li><a href="@Url.Action("EditExamGradeLec", "Lecturer")">Show Exams</a></li>
+                        <li><a href="@Url.Action("Logout", "Login")">Logout</a></li>
+                        <li><a style="color:darkgrey">  Welcome Back @Session["currName"]!</a></li>
+                    }
+                }
+                else//if nobody is login ->show only the login option
+                {
+                    < li >< a href = "@Url.Action("Login", "Login")" > Login </ a ></ li >
+                }
+            }
+
+        </ul>
+
+    </div>
+</body>
+</html>
+@RenderBody()

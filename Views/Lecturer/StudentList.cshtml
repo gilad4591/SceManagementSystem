@@ -1,0 +1,57 @@
+﻿@model MVC.ModelView.LecturerViewModel
+
+@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+<html>
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+
+    table, th, td, h2 {
+        border: 1px solid black;
+        border-collapse: separate;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+
+<h2>Student List of @Request.Params["courseName"] course:</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.StudId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.StudName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Students)
+    {
+        if (Request.Params["CourseId"].Equals (item.CourseId.ToString()))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudName)
+                </td>
+            </tr>
+        }
+      }
+
+</table>
+<div>@Html.ActionLink("Back to Schedule", "ShowSchedule")</div>
+
+</<html>

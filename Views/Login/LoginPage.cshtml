@@ -1,0 +1,61 @@
+﻿@model MVC.ModelView.UserViewModel
+@using MVC.Models;
+@{
+    ViewBag.Title = "LoginPage";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SCE Login Page</title>
+    <style>
+        html {
+            background-image: url('../../images/bg3.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<body>
+    <div>
+        <center>
+            @using (Html.BeginForm("LoginPage", "Login", FormMethod.Post))
+            {
+                if (Session["LogoutFname"] != null)
+                {
+                    <span style="color:red">@Session["LogoutFname"],You are logout.Have a nice Day!</span>
+                    <br />
+                    <br />
+                    <div style="background-color:white">
+                    <font size="4" color="yellowgreen" style="flex-grow:inherit">Login to see information</font>
+                     </div>
+                    Session["LogoutFname"] = null;
+                }
+                else
+                {
+                    <br />
+                    <div style="background-color:white">
+                        <font size="4" color="yellowgreen">Login to see information</font>
+                    </div>
+                }
+                <pre>
+                <b>Id :</b>        @Html.TextBoxFor(m => m.User.Id) @Html.ValidationMessageFor(x => x.User.Id)
+                <b>Password  :</b> @Html.TextBoxFor(m => m.User.Password) @Html.ValidationMessageFor(x => x.User.Password)
+                <input id="Submit1" type="submit" value="Login" />
+
+
+        
+                <span style="color:red">@ViewBag.UserORPassError</span>
+        </pre>
+            }
+        </center>
+    </div>
+    <div style="position: absolute; bottom: 4px; background-color: darkred">
+        Made by Gilad Cohen
+    </div>
+</body>
+</html>

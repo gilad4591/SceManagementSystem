@@ -1,0 +1,88 @@
+﻿@model MVC.ModelView.StudentViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+<html>
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+
+    table, th, td, h2 {
+        border: 1px solid black;
+        border-collapse: separate;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+
+<head>
+    <h2>Students Schedule: </h2>
+</head>
+<body>    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Finish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Class)
+            </th>
+        </tr>
+
+        
+
+        @{
+
+            foreach (var item in Model.Students)
+            {
+              <tr>
+                  @if (@Session["currUserId"].ToString() == item.StudId)
+                  {
+                      foreach (var item2 in Model.Courses)
+                      {
+
+                          if (item.CourseId == item2.CourseId)
+                          {
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.CourseName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Day)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Hour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Finish)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Class)
+                            </td>
+                        }
+                     }
+                  }
+            </tr>
+                }
+            }
+
+    </table>
+
+</body>
+</html>

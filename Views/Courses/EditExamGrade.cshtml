@@ -1,0 +1,105 @@
+﻿@model IEnumerable<MVC.Models.Exam>
+
+@{
+    ViewBag.Title = "EditExam";
+    Layout = "~/Views/Shared/FloatingHeader.cshtml";
+}
+
+@{
+    ViewBag.Title = "EditExamGrade";
+}
+
+<h2>Edit Exam Grade</h2>
+
+
+<html>
+<style>
+    html {
+        background-image: url('../../images/backgroundwhite.jpg');
+        background-size: cover;
+    }
+
+    table, th, td, h2,h3 {
+        border: 1px solid black;
+        border-collapse: separate;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+
+
+
+<head>
+    <h3>Exams Details: </h3>
+</head>
+<body>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoedADate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoedBDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoedADate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoedBDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditExamGradeConfirm", new { ExamIndex = item.ExamIndex, ExamCourseId = item.CourseId, ExamStudentId = item.StudentId, ExamCourseName = item.CourseName, ExamMoedADate = item.MoedADate, ExamMoedAClass = item.ClassA, ExamMoedBDate = item.MoedBDate, ExamMoedBClass = item.ClassB, ExamGrade = item.Grade })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>
+</html>
