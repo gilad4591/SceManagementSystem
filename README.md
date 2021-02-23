@@ -20,7 +20,7 @@ This web app has three different user types with a different features for each t
 * manage the system, 
 * register student and lecturers to courses, 
 * create new courses and exams.
-2. Lecturer  👨‍👩‍🏫
+2. Lecturer  👨‍🏫👩‍🏫
 * can view his schedule. 
 * view student list that registered to course.
 * add/edit student's exam grade.
